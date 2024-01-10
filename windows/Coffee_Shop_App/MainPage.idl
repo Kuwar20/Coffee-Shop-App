@@ -1,0 +1,10 @@
+#include "NamespaceRedirect.h"
+
+namespace Coffee_Shop_App
+{
+    [default_interface]
+    runtimeclass MainPage : XAML_NAMESPACE.Controls.Page
+    {
+        MainPage();
+    }
+}
