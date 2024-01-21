@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+    FlatList,
     ScrollView,
     StatusBar,
     StyleSheet,
@@ -21,6 +22,7 @@ import {
 } from '../theme/theme';
 import HeaderBar from '../components/HeaderBar';
 import CustomIcon from '../components/CustomIcon';
+import CoffeeCard from '../components/CoffeeCard';
 
 const getCategoriesFormData = (data: any) => {
     let temp: any = {};
@@ -128,6 +130,21 @@ const HomeScreen = () => {
                         </View>
                     ))}
                 </ScrollView>
+                {/* Coffee FlatList */}
+                <FlatList
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    data={sortedCoffee}
+                    contentContainerStyle={styles.FlatListContainer}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => {
+                        return <TouchableOpacity>
+                            <CoffeeCard name={item.name} />
+                        </TouchableOpacity>
+                    }}
+                />
+                {/* Beans  FlatList */}
+
             </ScrollView>
         </View>
     );
@@ -176,6 +193,11 @@ const styles = StyleSheet.create({
         width: SPACING.space_10,
         borderRadius: BORDERRADIUS.radius_10,
         backgroundColor: COLORS.primaryOrangeHex,
+    },
+    FlatListContainer: {
+        gap: SPACING.space_20,
+        paddingVertical: SPACING.space_20,
+        paddingHorizontal: SPACING.space_30,
     },
 });
 
